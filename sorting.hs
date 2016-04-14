@@ -1,11 +1,5 @@
---sort by function
-fruits = ["banana","mango","kiwi","orange"]
-sortedFruits = sortBy (compare `on` length) fruits
+qsort [] = []
+qsort (a:as) = qsort left ++ [a] ++ qsort right
+  where (left,right) = (filter (<=a) as, filter (>a) as)
 
---sort numbers
-numx = [10,200,30,14,5,61,17,81,91]
-sortedNums = sort numx
-
---sort char
-chars = ['z','d','m','a','c','v']
-sortedChar = sort chars
+main = print (qsort [8, 4, 0, 3, 1, 23, 11, 18])
